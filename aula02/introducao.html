@@ -1,5 +1,130 @@
 <!DOCTYPE html> 
 <html lang="en">
 
+<head> <!-- definições da página. o que fica no head não é diretamente visível -->
+    <meta charset = "UTF-8"> <!-- define a codificação de caracteres -->
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> <!-- define a escala da página para dispositivos móveis -->
+    <title>Aula 2 - HTML5</title> <!-- título da página, aparece na aba do navegador -->
+</head>
+
+<body> <!-- conteúdo da página -->
+
+    <header> <!-- cabeçalho da página, geralmente contém o título e a navegação -->
+        <h1>Título</h1> <!-- título principal da página -->
+        <nav>
+            <ul>
+                <li><a href=#introducao>Introdução</a></li> <!-- link para a seção "introdução" -->
+                <li><a href=#listas>Listas</a></li>
+                <li><a href=#links>Links</a></li>
+                <li><a href=#containers>Containers</a></li>
+                <li><a href=#atributos>Atributos</a></li>
+                <li><a href=#imagem>Imagem</a></li>
+                <li><a href=#formulario>Formulário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="introducao"> <!-- seção da página, pode ser usada para organizar o conteúdo -->
+        <h2>Título menor</h2> <!-- subtítulo da página -->
+        <h3>Título ainda menor</h3> <!-- e vai ficando menor (até o h6) -->
+
+        <p> <!--texto "corrido" -->
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacinia ultrices massa eget suscipit. Morbi ligula arcu, luctus vitae congue et, hendrerit at turpis. Maecenas diam lectus, efficitur vitae imperdiet ut, suscipit nec leo. Maecenas dictum purus nisi, vitae aliquam erat rhoncus sit amet. Morbi mollis est lectus, at viverra orci tincidunt at. Curabitur convallis, nisl at posuere lacinia, elit elit efficitur ipsum, id imperdiet justo felis congue ante. Morbi vel accumsan ligula. Nam quam magna, egestas quis ante id, sodales molestie nulla. Nam congue lorem a mi dictum porta. Ut feugiat laoreet est, nec lacinia metus pharetra sed.
+            Sed sagittis neque metus, quis ultrices nibh pretium quis. Maecenas sagittis arcu cursus magna convallis pellentesque. Vivamus a metus tempus, scelerisque nunc non, cursus dui. Nunc convallis mauris quis tempor venenatis. Curabitur sit amet molestie nulla. Phasellus in volutpat sapien. Donec lacinia lacus non dui accumsan ornare. In nisl turpis, viverra eu dui vel, finibus blandit enim. Integer semper dolor a orci euismod, a egestas leo vestibulum. Donec venenatis, libero et eleifend ullamcorper, ante nisi volutpat nibh, nec iaculis nulla metus id nibh. 
+        </p>
+    </section>
+
+    <section id="listas"> 
+        <h2>Dois tipos de lista:</h2>
+        <h3>Lista não ordenada</h3>
+        <ul> <!-- "unordered list" -->
+            <li>item 1</li> <!-- item da lista ("list item") -->
+            <li>item 2</li>
+            <li>item 3</li>
+        </ul>
+        <h3>Lista ordenada</h3>
+        <ol> <!-- "ordered list" -->
+            <li>item 1</li> <!-- item da lista ("list item") -->
+            <li>item 2</li>
+            <li>item 3</li>
+        </ol>
+    </section>
+
+    <section id="links">
+        <h2>Links</h2>
+        <a href="http://icmc.usp.br">Clique Aqui (abre na mesma janela)</a> <!-- dentro de href fica o link em si, entre os <a></a> fica o texto exposto -->
+        <br> <!-- quebra de linha -->
+        <!-- NOTA: teoricamente não é uma boa prática usar br. o mais correto é definir os detalhes usando CSS -->
+        <!-- de acordo com a professora, um site que tem muito "br" não é um bom indicativo -->
+        <!-- uso aqui porque não estou fazendo nada de CSS ainda, então estou deixando essa bagunça -->
+        <a href="http://icmc.usp.br" target="_blank">Clique Aqui (abre em nova janela)</a> <!-- target="_blank" faz o link abrir em nova janela -->
+    </section>
+
+    <section id="containers">
+        <h2>Containers</h2>
+        <ul>
+            <li>header: cabeçalho da página</li>
+            <li>nav: navegação da página</li>
+            <li>section: seções da página</li>
+            <li>footer: rodapé</li>
+            <li>aside: conteúdo extra que fica ao lado</li>
+            <li>article: conteúdos independetes da página</li>
+            <li>div: container genérico</li>
+        </ul>
+    </section>
+    
+    <section id="atributos">
+        <h2>Atributos</h2>
+        <ul>
+            <li>id: identificador único</li> 
+            <li>href: indica a localização de um recurso</li>
+            <li>src: indica a localização de uma mídia</li>
+            <li>alt: texto alternativo</li>
+            <li>class: especificar classe css</li>
+            <li>style: permite adicionar css</li>
+            <li>title: tool tip (o negócio que aparece lido pelo cursor do mouse)</li>
+            <li>target: indica onde abrir um link</li>
+            <li>rel: indica a relação entre o documento atual e o recurso linkado</li>
+        </ul>
+    </section>
+
+    <section id="imagem">
+        <h2>Imagem</h2>
+        <img src="pup.jpg" alt="pops" height="300px" title="popi"> <!-- tag para inserir imagem, "source" indica a localização da imagem, "alt" é um texto alternativo caso a imagem não seja carregada e "height" define a altura da imagem -->
+    </section>
+
+    <section id="formulario">
+        <h2>Formulário</h2>
+        <form>
+            <label for="nome">Nome: </label><br><input type="text" name="nome"> <!-- "label" é a etiqueta do campo, "for" indica a qual campo o label se refere, "input" é o campo de entrada de dados, "type" define o tipo do campo, "name" é o nome do campo, que é usado para identificar os dados enviados -->
+            <br>
+            <label for="email">Email: </label><br><input type="email" name="email">
+            <br>
+            <label for="senha">Senha: </label><br><input type="password" name="senha">
+            <br>
+            <label for="área de texto">Área de texto: </label><br><textarea name="área de texto"></textarea> <!-- "textarea" é um campo de texto maior, para textos mais longos -->
+            <br><br>
+            <select id="carros" name="carros"> <!-- "select" é um campo de seleção, "id" é o identificador do campo, "name" é o nome do campo -->
+                <option value="twingo">Twingo</option> <!-- "option" é uma opção dentro do campo de seleção, "value" é o valor que será enviado quando essa opção for selecionada -->
+                <option value="monza">Monza</option>
+                <option value="uno">Uno</option>
+                <option value="marea">Marea</option>
+                <option value="palio">Palio</option>
+                <option value="gol">Gol</option>
+                <option value="chevette">Chevette</option>
+            </select>
+            <br><br>
+            <div> <!-- acrescentando uma div só para ficar mais organizado -->
+                <label for="">Escolha um:</label>
+                    <input type="radio" name="escolha" value="opcao1">Opção 1 <!-- "radio" é um campo de seleção onde apenas uma opção pode ser selecionada, "name" é o nome do campo, "value" é o valor que será enviado quando essa opção for selecionada -->
+                    <input type="radio" name="escolha" value="opcao2">Opção 2
+                    <input type="radio" name="escolha" value="opcao3">Opção 3
+            </div>
+            <br>
+            <input type="submit" value="Enviar"> <!-- "submit" é um botão que envia o formulário, "value" é o texto que aparece no botão -->
+        </form>
+    </section>
+
+</body>
 
 </html>
