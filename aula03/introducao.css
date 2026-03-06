@@ -1,0 +1,74 @@
+/*
+
+definição comum do css:
+
+seletor {
+    propriedade: valor;
+}
+
+seletor de elemento html: p, h1, h2, etc
+seletor de id: #id
+seletor de classe: .classe (o mais comum)
+
+*/
+
+* { /* aplicando uma fonte sobre toda a página*/
+    font-family: sans-serif;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: darkolivegreen;
+}
+
+.fundo-verde { /* pra classe, colocamos '.' antes */
+    background-color: darkolivegreen;
+}
+
+.fundo-areia {
+    background-color: darkkhaki;
+}
+
+.letra-branca {
+    color: white;
+}
+
+.letra-verde {
+    color: darkolivegreen;
+}
+
+.letra-areia {
+    color: darkkhaki;
+}
+
+.borda-verde {
+    border: 3px solid darkolivegreen;
+}
+
+a {
+    color: darkolivegreen;
+}
+
+a:hover { /* quando o mouse passa por "a", a cor muda */
+    color: black
+}
+
+#fonte-sybau { /* pra id, colocamos '#' antes */
+    font-family: Snell Roundhand, cursive;
+}
+
+.caixa-direita {
+    display: block; /* a caixa é um bloco, ou seja, ocupa toda a largura disponível */
+    float: right; /* a caixa vai para a direita */
+    inline-size: 200px; /* largura da caixa */
+    padding: 10px; /* espaço entre o conteúdo e a borda da caixa */
+}
+
+.div-centralizada { /* gabarito para centralizar div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+/* css é muito difícil seloco. tem muita coisa */
