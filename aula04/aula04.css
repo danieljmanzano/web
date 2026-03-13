@@ -1,0 +1,53 @@
+/* aula sobre design responsivo */
+
+#titulo {
+    flex: 0 1 100%
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap; /* permite que as caixas se movam para a próxima linha quando necessário */
+    gap: 10px; /* espaço entre as caixas */
+    box-sizing: border-box; /* para garantir que o padding e a borda sejam incluídos no tamanho total das caixas */
+}
+
+.caixa-esquerda {
+    display: flex;
+    flex: 0 1 calc(50% - 5px); /* ocupa metade da largura disponível, menos a metade do gap */
+    /* 
+    o comando acima "abrevia" três comandos:
+        - flex-grow: 0; // a caixa não cresce além do seu tamanho inicial
+        - flex-shrink: 1; // a caixa pode encolher se necessário para caber no container
+        - flex-basis: calc(50% - 5px); // a largura inicial da caixa, levando em conta o gap
+    */
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.caixa-direita {
+    display: flex;
+    flex: 0 1 calc(50% - 5px);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.caixa-centro {
+    display: flex;
+    justify-content: center; /* para centralizar horizontalmente */
+    align-items: center; /* para centralizar verticalmente */
+    flex-wrap: wrap;
+    flex: 0 1 100%; /* ocupa a linha inteira */
+    box-sizing: border-box;
+}
+
+.borda-rosa {
+    border: 3px solid pink;
+}
+
+.espaco-vazio {
+    width: 100%; /* ocupa toda a largura disponível */
+    height: 20px; /* altura do espaço vazio */
+}
+
