@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Máquina de Refrigerante</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="scene">
+
+    <div class="machine-img-wrap">
+      <img src="image.png" alt="Máquina de Refrigerante" class="machine-img" />
+
+      <!-- lista de produtos sobre o vidro -->
+      <div class="overlay products-overlay">
+        <div class="overlay-label">Selecione seu refrigerante</div>
+        <div id="products-list" class="products-list">
+          <p class="loading-msg">Carregando...</p>
+        </div>
+      </div>
+
+      <!-- painel de controles sobre o painel lateral direito -->
+      <div class="overlay controls-overlay">
+        <div class="display-box">
+          <div class="display-label">Inserido</div>
+          <div id="display-value" class="display-value">R$0,00</div>
+          <div class="display-sublabel" id="selected-label">Nenhum selecionado</div>
+        </div>
+
+        <div
+          id="coin-slot"
+          class="coin-slot"
+          ondragover="event.preventDefault()"
+          ondrop="onCoinDrop(event)"
+        >↓<br>MOEDA</div>
+
+        <button class="buy-btn" onclick="buyDrink()">COMPRAR</button>
+      </div>
+    </div>
+
+    <!-- moedas e mensagem abaixo da máquina -->
+    <div class="bottom-area">
+      <div class="coins-tray">
+        <span class="coins-label">Arraste →</span>
+        <div class="coin c25"  draggable="true" ondragstart="onCoinDrag(event, 25)">R$0,25</div>
+        <div class="coin c50"  draggable="true" ondragstart="onCoinDrag(event, 50)">R$0,50</div>
+        <div class="coin c100" draggable="true" ondragstart="onCoinDrag(event, 100)">R$1,00</div>
+      </div>
+      <div id="message-box" class="message-box"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
