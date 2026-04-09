@@ -1,120 +1,120 @@
-const API_URL = 'https://api.jsonbin.io/v3/b/69d64173aaba882197d7779a';
+const URL_API = 'https://api.jsonbin.io/v3/b/69d64173aaba882197d7779a';
 
-let drinks        = [];
-let selectedDrink = null;
-let insertedCents = 0;
-let draggedCoin   = 0;
+let bebidas           = [];
+let bebidaSelecionada = null;
+let centavosInseridos = 0;
+let moedaArrastada    = 0;
 
 // carrega bebidas do json
-fetch(API_URL)
+fetch(URL_API)
   .then(res => res.json())
   .then(data => {
-    drinks = data.record.bebidas;
-    renderProducts();
+    bebidas = data.record.bebidas;
+    renderizarProdutos();
   })
   .catch(() => {
-    document.getElementById('products-list').innerHTML =
-      '<p class="loading-msg" style="color:#f66">Erro ao carregar.</p>';
+    document.getElementById('lista-produtos').innerHTML =
+      '<p class="msg-carregando" style="color:#f66">Erro ao carregar.</p>';
   });
 
-function renderProducts() {
-  const list = document.getElementById('products-list');
-  list.innerHTML = '';
-  drinks.forEach((drink, i) => {
+function renderizarProdutos() {
+  const lista = document.getElementById('lista-produtos');
+  lista.innerHTML = '';
+  bebidas.forEach((bebida, indice) => {
     const btn = document.createElement('button');
-    btn.className = 'product-btn';
-    btn.dataset.index = i;
+    btn.className = 'btn-produto';
+    btn.dataset.indice = indice;
     btn.innerHTML = `
-      <img class="drink-img" src="${drink.imagem}" alt="${drink.sabor}" onerror="this.style.display='none'" />
-      <span class="drink-info">
-        <span class="drink-name">${drink.sabor}</span>
-        <span class="drink-price">R$ ${drink.preco.toFixed(2).replace('.', ',')}</span>
+      <img class="img-bebida" src="${bebida.imagem}" alt="${bebida.sabor}" onerror="this.style.display='none'" />
+      <span class="info-bebida">
+        <span class="nome-bebida">${bebida.sabor}</span>
+        <span class="preco-bebida">R$ ${bebida.preco.toFixed(2).replace('.', ',')}</span>
       </span>
     `;
-    btn.addEventListener('click', () => selectDrink(i));
-    list.appendChild(btn);
+    btn.addEventListener('click', () => selecionarBebida(indice));
+    lista.appendChild(btn);
   });
 }
 
 // seleção de bebida
-function selectDrink(index) {
-  selectedDrink = drinks[index];
-  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.product-btn[data-index="${index}"]`).classList.add('active');
-  document.getElementById('selected-label').textContent =
-    `${selectedDrink.sabor} R$${selectedDrink.preco.toFixed(2).replace('.', ',')}`;
-  clearMessage();
+function selecionarBebida(indice) {
+  bebidaSelecionada = bebidas[indice];
+  document.querySelectorAll('.btn-produto').forEach(b => b.classList.remove('ativo'));
+  document.querySelector(`.btn-produto[data-indice="${indice}"]`).classList.add('ativo');
+  document.getElementById('rotulo-selecionado').textContent =
+    `${bebidaSelecionada.sabor} R$${bebidaSelecionada.preco.toFixed(2).replace('.', ',')}`;
+  limparMensagem();
 }
 
 // drag & drop das moedas
-function onCoinDrag(event, valueCents) {
-  draggedCoin = valueCents;
-  event.dataTransfer.effectAllowed = 'copy';
+function aoArrastarMoeda(evento, valorCentavos) {
+  moedaArrastada = valorCentavos;
+  evento.dataTransfer.effectAllowed = 'copy';
 }
 
-function onCoinDrop(event) {
-  event.preventDefault();
-  if (!draggedCoin) return;
-  insertedCents += draggedCoin;
-  updateDisplay();
-  draggedCoin = 0;
+function aoSoltarMoeda(evento) {
+  evento.preventDefault();
+  if (!moedaArrastada) return;
+  centavosInseridos += moedaArrastada;
+  atualizarVisor();
+  moedaArrastada = 0;
 }
 
-const slot = document.getElementById('coin-slot');
-slot.addEventListener('dragenter', () => slot.classList.add('drag-over'));
-slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
-slot.addEventListener('drop',      () => slot.classList.remove('drag-over'));
+const entrada = document.getElementById('entrada-moeda');
+entrada.addEventListener('dragenter', () => entrada.classList.add('arrastando-sobre'));
+entrada.addEventListener('dragleave', () => entrada.classList.remove('arrastando-sobre'));
+entrada.addEventListener('drop',      () => entrada.classList.remove('arrastando-sobre'));
 
 // atualiza visor
-function updateDisplay() {
-  const reais = insertedCents / 100;
-  document.getElementById('display-value').textContent =
+function atualizarVisor() {
+  const reais = centavosInseridos / 100;
+  document.getElementById('valor-visor').textContent =
     'R$' + reais.toFixed(2).replace('.', ',');
 }
 
 // comprar
-function buyDrink() {
-  if (!selectedDrink) {
-    showMessage('Selecione uma bebida primeiro.', 'erro');
+function comprarBebida() {
+  if (!bebidaSelecionada) {
+    mostrarMensagem('Selecione uma bebida primeiro.', 'erro');
     return;
   }
 
-  const priceCents = Math.round(selectedDrink.preco * 100);
+  const precoCentavos = Math.round(bebidaSelecionada.preco * 100);
 
-  if (insertedCents < priceCents) {
-    const faltam = (priceCents - insertedCents) / 100;
-    showMessage(`Saldo insuficiente.\nFaltam R$ ${faltam.toFixed(2).replace('.', ',')}.`, 'erro');
+  if (centavosInseridos < precoCentavos) {
+    const faltam = (precoCentavos - centavosInseridos) / 100;
+    mostrarMensagem(`Saldo insuficiente.\nFaltam R$ ${faltam.toFixed(2).replace('.', ',')}.`, 'erro');
     return;
   }
 
-  const trocoCents = insertedCents - priceCents;
-  if (trocoCents > 0) {
-    const troco = trocoCents / 100;
-    showMessage(
-      `Refrigerante "${selectedDrink.sabor}" liberado!\nTroco: R$ ${troco.toFixed(2).replace('.', ',')}.`,
+  const trocoCentavos = centavosInseridos - precoCentavos;
+  if (trocoCentavos > 0) {
+    const troco = trocoCentavos / 100;
+    mostrarMensagem(
+      `Refrigerante "${bebidaSelecionada.sabor}" liberado!\nTroco: R$ ${troco.toFixed(2).replace('.', ',')}.`,
       'troco'
     );
   } else {
-    showMessage(`Refrigerante "${selectedDrink.sabor}" liberado!`, 'ok');
+    mostrarMensagem(`Refrigerante "${bebidaSelecionada.sabor}" liberado!`, 'ok');
   }
 
   // reset
-  insertedCents = 0;
-  selectedDrink = null;
-  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('selected-label').textContent = 'Nenhum selecionado';
-  updateDisplay();
+  centavosInseridos = 0;
+  bebidaSelecionada = null;
+  document.querySelectorAll('.btn-produto').forEach(b => b.classList.remove('ativo'));
+  document.getElementById('rotulo-selecionado').textContent = 'Nenhum selecionado';
+  atualizarVisor();
 }
 
 // mensagens
-function showMessage(text, type) {
-  const box = document.getElementById('message-box');
-  box.textContent = text;
-  box.className = 'message-box ' + (type || '');
+function mostrarMensagem(texto, tipo) {
+  const caixa = document.getElementById('caixa-mensagem');
+  caixa.textContent = texto;
+  caixa.className = 'sobreposicao caixa-mensagem ' + (tipo || '');
 }
 
-function clearMessage() {
-  const box = document.getElementById('message-box');
-  box.textContent = '';
-  box.className = 'message-box';
+function limparMensagem() {
+  const caixa = document.getElementById('caixa-mensagem');
+  caixa.textContent = '';
+  caixa.className = 'sobreposicao caixa-mensagem';
 }

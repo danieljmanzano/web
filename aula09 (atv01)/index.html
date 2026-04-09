@@ -10,45 +10,41 @@
 
   <div class="scene">
 
-    <div class="machine-img-wrap">
-      <img src="image.png" alt="Máquina de Refrigerante" class="machine-img" />
-
-      <!-- lista de produtos sobre o vidro -->
-      <div class="overlay products-overlay">
-        <div class="overlay-label">Selecione seu refrigerante</div>
-        <div id="products-list" class="products-list">
-          <p class="loading-msg">Carregando...</p>
-        </div>
-      </div>
-
-      <!-- painel de controles sobre o painel lateral direito -->
-      <div class="overlay controls-overlay">
-        <div class="display-box">
-          <div class="display-label">Inserido</div>
-          <div id="display-value" class="display-value">R$0,00</div>
-          <div class="display-sublabel" id="selected-label">Nenhum selecionado</div>
-        </div>
-
-        <div
-          id="coin-slot"
-          class="coin-slot"
-          ondragover="event.preventDefault()"
-          ondrop="onCoinDrop(event)"
-        >↓<br>MOEDA</div>
-
-        <button class="buy-btn" onclick="buyDrink()">COMPRAR</button>
+    <div class="area-esquerda">
+      <div class="bandeja-moedas">
+        <span class="rotulo-moedas">Arraste →</span>
+        <div class="moeda m25"  draggable="true" ondragstart="aoArrastarMoeda(event, 25)">R$0,25</div>
+        <div class="moeda m50"  draggable="true" ondragstart="aoArrastarMoeda(event, 50)">R$0,50</div>
+        <div class="moeda m100" draggable="true" ondragstart="aoArrastarMoeda(event, 100)">R$1,00</div>
       </div>
     </div>
 
-    <!-- moedas e mensagem abaixo da máquina -->
-    <div class="bottom-area">
-      <div class="coins-tray">
-        <span class="coins-label">Arraste →</span>
-        <div class="coin c25"  draggable="true" ondragstart="onCoinDrag(event, 25)">R$0,25</div>
-        <div class="coin c50"  draggable="true" ondragstart="onCoinDrag(event, 50)">R$0,50</div>
-        <div class="coin c100" draggable="true" ondragstart="onCoinDrag(event, 100)">R$1,00</div>
+    <div class="container-img-maquina">
+      <img src="image.png" alt="Máquina de Refrigerante" class="img-maquina" />
+
+      <div class="sobreposicao sobreposicao-produtos">
+        <div class="rotulo-sobreposicao">Selecione seu refrigerante</div>
+        <div id="lista-produtos" class="lista-produtos">
+          <p class="msg-carregando">Carregando...</p>
+        </div>
       </div>
-      <div id="message-box" class="message-box"></div>
+
+      <div id="caixa-mensagem" class="sobreposicao caixa-mensagem"></div>
+
+      <div class="sobreposicao caixa-visor" id="area-visor">
+        <div class="rotulo-visor">Inserido</div>
+        <div id="valor-visor" class="valor-visor">R$0,00</div>
+        <div class="subrotulo-visor" id="rotulo-selecionado">Nenhum selecionado</div>
+      </div>
+
+      <div
+        id="entrada-moeda"
+        class="entrada-moeda sobreposicao"
+        ondragover="event.preventDefault()"
+        ondrop="aoSoltarMoeda(event)"
+      >↓<br>MOEDA</div>
+
+      <button class="sobreposicao btn-comprar" id="area-comprar" onclick="comprarBebida()">COMPRAR</button>
     </div>
 
   </div>
