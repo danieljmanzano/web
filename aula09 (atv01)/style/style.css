@@ -5,6 +5,7 @@ body {
   justify-content: center;
 }
 
+/* conjunto dos elementos da máquina */
 .scene {
   display: flex;
   flex-direction: row;
@@ -12,7 +13,6 @@ body {
   gap: 40px;
 }
 
-/* imagem da máquina */
 .container-img-maquina {
   position: relative;
   height: 100vh;
@@ -27,7 +27,7 @@ body {
 
 .sobreposicao { position: absolute; }
 
-/* lista de produtos */
+/* lista de produtos sobrepostos na imagem da máquina */
 .sobreposicao-produtos {
   top: 5%;
   left: 24.7%;
@@ -40,6 +40,7 @@ body {
   backdrop-filter: blur(3px);
 }
 
+/* rótulo da área de produtos ("selecione seu refrigerante") */
 .rotulo-sobreposicao {
   color: #ffeb3b;
   font-size: 0.75rem;
@@ -64,6 +65,7 @@ body {
   grid-column: span 2;
 }
 
+/* botão de produto (item da lista de produtos) */
 .btn-produto {
   background: rgba(10, 10, 30, 0.82);
   border: 1.5px solid #444;
@@ -101,8 +103,7 @@ body {
 .btn-produto:hover  { background: rgba(40,40,80,0.9); border-color: #ffeb3b; }
 .btn-produto.ativo { background: rgba(20,55,25,0.95); border-color: #2ecc71; box-shadow: 0 0 7px #2ecc71aa; }
 
-
-/* visor da máquina */
+/* visor da máquina referente ao dinheiro */
 .caixa-visor {
   width: 85%;
   background: #060606;
@@ -112,6 +113,7 @@ body {
   text-align: center;
 }
 
+/* texto de "inserido" no visor */
 .rotulo-visor {
   font-size: 0.42rem;
   color: #555;
@@ -126,28 +128,20 @@ body {
   margin: 2px 0;
 }
 
-.subrotulo-visor {
-  font-size: 0.38rem;
-  color: #666;
-  margin-top: 3px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 /* área do display (com o dinheiro inserido) */
 #area-visor {
   top: 27%;
   left: 69%;
-  width: 6%;
+  width: 5%;  
   height: 3.5%;
 }
 
+/* área de entrada para moedas */
 #entrada-moeda {
   font-size: 0.55rem;
-  top: 42%;
+  top: 41.7%;
   left: 69.5%;
-  width: 6%;
+  width: 5.2%;
   height: 5%;
   
   background: linear-gradient(to bottom, #222, #0a0a0a); 
@@ -164,25 +158,28 @@ body {
   line-height: 1.2;
 }
 
+/* hover da área de entrada para moedas */
 #entrada-moeda.arrastando-sobre {
   border-color: #ffeb3b;
   background: #111100;
   color: #ffeb3b;
 }
 
+/* espaço para o botão de compra */
 #area-comprar {
-  top: 32.5%;
+  top: 32.3%;
   left: 69.5%;
-  width: 6%;
-  height: 8%;
+  width: 5.2%;
+  height: 8.3%;
 }
 
+/* botão de compra em si */
 .btn-comprar {
   width: 90%;
   padding: 7px 2px;
   background: #27ae60;
   color: #fff;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   letter-spacing: 1px;
   border: none;
   border-radius: 5px;
@@ -200,8 +197,8 @@ body {
   gap: 10px;
 }
 
-/* espaço onde estão as moedas (não confundir com espaço onde são colocadas!!) */
-.bandeja-moedas {
+/* espaço onde estão as moedas (onde pega para arrastar depois) */
+.espaco-moedas {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -228,17 +225,18 @@ body {
   transition: transform 0.1s, box-shadow 0.1s;
 }
 .moeda:hover  { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(0,0,0,0.6); }
-.moeda:active { cursor: grabbing; transform: scale(0.93); }
+.moeda.arrastando { cursor: grabbing; transform: scale(0.93); }
 
 .m25  { background: radial-gradient(circle at 35% 35%, #f5cba7, #d4a547); color: #5d3a00; }
 .m50  { background: radial-gradient(circle at 35% 35%, #d5d8dc, #95a5a6); color: #2c3e50; }
 .m100 { background: radial-gradient(circle at 35% 35%, #f9e79f, #d4ac0d); color: #5d3a00; }
 
+/* caixa de mensagem sobre entrega do refrigerante/troco */
 #caixa-mensagem {
   top: 62%;  
-  left: 30.5%; 
-  width: 31%;
-  height: 7%;
+  left: 30.95%; 
+  width: 30.5%;
+  height: 8%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,7 +252,24 @@ body {
   transition: border-color 0.3s, color 0.3s;
   white-space: pre-line;
 }
-
 #caixa-mensagem.ok    { color: #2ecc71; border-color: #2ecc71; }
 #caixa-mensagem.troco { color: #2ecc71; border-color: #2ecc71; }
-#caixa-mensagem.erro  { color: #e74c3c; border-color: #e74c3c; }
+
+/* visor com as mensagens de aviso no canto superior direito */
+#visor-avisos {
+  top: 5%;
+  left: 68.2%;
+  width: 7.9%;
+  height: 13%;
+  background: #0a0a0a;
+  color: #e74c3c;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.55rem;
+  padding: 4px;
+  box-sizing: border-box;
+}

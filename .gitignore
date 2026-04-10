@@ -1,0 +1,13 @@
+/trabalho1 
+^ por enquanto não pretendo subir o trabalho
+
+.env
+/node_modules
+/dist
+/build
+.DS_Store
+*.log
+*.tmp
+.idea/
+.vscode/
+

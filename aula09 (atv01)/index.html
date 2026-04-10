@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Máquina de Refrigerante</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
 
   <div class="scene">
 
     <div class="area-esquerda">
-      <div class="bandeja-moedas">
+      <div class="espaco-moedas">
         <span class="rotulo-moedas">Arraste →</span>
-        <div class="moeda m25"  draggable="true" ondragstart="aoArrastarMoeda(event, 25)">R$0,25</div>
-        <div class="moeda m50"  draggable="true" ondragstart="aoArrastarMoeda(event, 50)">R$0,50</div>
-        <div class="moeda m100" draggable="true" ondragstart="aoArrastarMoeda(event, 100)">R$1,00</div>
+        <div class="moeda m25"  draggable="true" ondragstart="aoArrastarMoeda(event, 25)" ondragend="aoTerminarArraste(event)">R$0,25</div>
+        <div class="moeda m50"  draggable="true" ondragstart="aoArrastarMoeda(event, 50)" ondragend="aoTerminarArraste(event)">R$0,50</div>
+        <div class="moeda m100" draggable="true" ondragstart="aoArrastarMoeda(event, 100)" ondragend="aoTerminarArraste(event)">R$1,00</div>
       </div>
     </div>
 
     <div class="container-img-maquina">
-      <img src="image.png" alt="Máquina de Refrigerante" class="img-maquina" />
+      <img src="public/image.png" alt="Máquina de Refrigerante" class="img-maquina" />
 
       <div class="sobreposicao sobreposicao-produtos">
         <div class="rotulo-sobreposicao">Selecione seu refrigerante</div>
@@ -29,12 +29,13 @@
         </div>
       </div>
 
+      <div id="visor-avisos" class="sobreposicao visor-avisos"></div>
+
       <div id="caixa-mensagem" class="sobreposicao caixa-mensagem"></div>
 
       <div class="sobreposicao caixa-visor" id="area-visor">
         <div class="rotulo-visor">Inserido</div>
         <div id="valor-visor" class="valor-visor">R$0,00</div>
-        <div class="subrotulo-visor" id="rotulo-selecionado">Nenhum selecionado</div>
       </div>
 
       <div
@@ -49,6 +50,6 @@
 
   </div>
 
-  <script src="script.js"></script>
+  <script src="script/script.js"></script>
 </body>
 </html>
