@@ -11,6 +11,4 @@ Tenha este repositório clonado localmente. Após isso, basta abrir a pasta no V
 - ```\script```: contém o código js que regula o projeto.
 - ```\style```: contém o arquivo css.
 
-## Observação
-Por precaução, a imagem ```info/print_funcionamento.png``` mostra como é a interface idealmente. É possível que outras máquinas com tela de navegador diferentes tenham problemas em visualizar a configuração ideal dos elementos visuais da aplicação.
 
