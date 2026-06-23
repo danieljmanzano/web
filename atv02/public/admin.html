@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Painel de administração — Poções e Soluções. Cadastre, liste e remova poções." />
+  <title>Admin — Poções e Soluções</title>
+  <link rel="stylesheet" href="/style/style.css" />
+  <link rel="stylesheet" href="/style/admin.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="logo-text">Poções <em>&amp;</em> Soluções</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">← Voltar à Loja</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ADMIN PANEL -->
+  <main class="admin-main">
+    <div class="admin-header">
+      <h1 class="section-title">Administração de Poções</h1>
+    </div>
+
+    <div class="admin-grid">
+
+      <!-- Formulário de Cadastro -->
+      <section class="admin-form-section" id="form-section">
+        <h2 class="admin-section-title">Cadastrar Nova Poção</h2>
+        <form id="potion-form" class="potion-form">
+          <div class="form-group">
+            <label for="potion-name">Nome da Poção</label>
+            <input type="text" id="potion-name" name="name" placeholder="Ex: Poção da Invisibilidade" required />
+          </div>
+          <div class="form-group">
+            <label for="potion-description">Descrição</label>
+            <textarea id="potion-description" name="description" rows="4" placeholder="Descreva os efeitos da poção..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="potion-image">URL da Imagem</label>
+            <input type="text" id="potion-image" name="image" placeholder="https://exemplo.com/imagem.png" required />
+          </div>
+          <div class="form-group">
+            <label for="potion-price">Preço (moedas)</label>
+            <input type="number" id="potion-price" name="price" min="1" placeholder="Ex: 250" required />
+          </div>
+          <button type="submit" class="btn-submit" id="btn-submit">
+            <span class="btn-text">Cadastrar Poção</span>
+            <span class="btn-loading" style="display:none;">Cadastrando...</span>
+          </button>
+          <div id="form-feedback" class="form-feedback"></div>
+        </form>
+      </section>
+
+      <!-- Lista de Poções -->
+      <section class="admin-list-section" id="list-section">
+        <h2 class="admin-section-title">Poções Cadastradas</h2>
+        <div id="admin-potions-list" class="admin-potions-list">
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Carregando poções...</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL DE CONFIRMAÇÃO -->
+  <div id="confirm-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+      <h3 class="modal-title">Confirmar Remoção</h3>
+      <p class="modal-text" id="modal-text">Tem certeza que deseja remover esta poção?</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="btn-cancel-delete">Cancelar</button>
+        <button class="btn-danger" id="btn-confirm-delete">Remover</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/script/admin.js"></script>
+</body>
+</html>

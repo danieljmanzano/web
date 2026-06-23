@@ -1,0 +1,28 @@
+{
+  "name": "pocoes-e-solucoes",
+  "version": "1.0.0",
+  "description": "Web Service para a loja de poções 'Poções e Soluções' da Annabelle Merigold",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "poções",
+    "web-service",
+    "express",
+    "sequelize",
+    "sqlite"
+  ],
+  "author": "Daniel Manzano",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "sequelize": "^6.37.0",
+    "sqlite3": "^5.1.7"
+  },
+  "allowScripts": {
+    "sqlite3@5.1.7": true
+  }
+}
